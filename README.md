@@ -118,7 +118,7 @@ I handled this in the **clean layer** by quarantining invalid `closed_date` valu
 
 ---
 
-## Repository Structure (Suggested)
+## Repository Structure
 ```text
 hr-ta-analytics-dashboard/
 ├── README.md
@@ -126,7 +126,7 @@ hr-ta-analytics-dashboard/
 │   ├── 01_ingest_raw_tables.sql
 │   ├── 02_create_clean_views.sql
 │   ├── 03_validation_checks.sql
-│   └── 04_dashboard_mart_views.sql   # in progress
+│   └── 04_dashboard_mart_views.sql   # (in progress)
 ├── docs/
 │   ├── data_model_notes.md
 │   ├── cleaning_checklist.md
@@ -141,12 +141,11 @@ hr-ta-analytics-dashboard/
 │   ├── 01_ingest_raw_tables.sql
 │   ├── 02_create_clean_views.sql
 │   ├── 03_validation_checks.sql
-│   └── 04_dashboard_mart_views.sql   (in progress)
+│   └── 04_dashboard_mart_views.sql  # (in progress)
 ├── docs/
 │   ├── data_model_notes.md
 │   ├── cleaning_checklist.md
 │   └── dashboard_plan.md
 ├── screenshots/
 │   └── (dashboard is in progress)
-└── sample_outputs/
-    └── (optional)
+
