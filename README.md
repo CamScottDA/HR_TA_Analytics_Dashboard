@@ -38,24 +38,27 @@ https://public.tableau.com/app/profile/cameron.scott3127/vizzes
 - What does current funnel health suggest about recruiting priorities and bottlenecks?
 
 ## What I discovered from my analysis
-- **Attrition needs context, not just totals:** termination counts alone can overstate the story, so separating attrition rate from raw terminations helped distinguish true workforce risk from simple headcount scale.
-- **Termination type matters for interpretation:** splitting exits into **Voluntary**, **Involuntary**, **Other**, and potential data-quality edge cases made the attrition view more actionable than a single rolled-up measure.
-- **Department and tenure both change the story:** overall attrition can look stable while specific tenure bands or departments carry a disproportionate share of exits, making filterable driver analysis more useful than a single summary chart.
-- **Workforce KPIs are highly sensitive to time logic:** headcount and attrition metrics only behaved correctly once the dashboard consistently anchored calculations to the latest visible month rather than mixing values across periods.
-- **Recruiting performance is a balance of speed and quality:** source channels should not be judged only by applicant volume; acceptance rate, progression through the funnel, and hiring outcomes provide a more complete picture.
-- **Top-line funnel counts can be misleading without stage definitions:** recruiting metrics became much more reliable after standardizing stage names, outcomes, and status logic across candidate and stage-event data.
-- **Chronology issues can quietly distort hiring metrics:** invalid requisition close dates would have polluted time-to-fill results, so quarantining bad dates in the clean layer protected downstream analysis without altering raw data.
-- **Dashboard filters can easily break KPI meaning:** a major part of the build was making sure KPIs, titles, and charts responded to year, quarter, region, and month logic in a consistent way instead of showing partial or misleading totals.
+- **Workforce trends require multiple metrics to interpret correctly:** headcount changes are influenced by hires, separations, promotions, and transfers, so analyzing hiring alone does not fully explain workforce stability.
+- **Candidate volume does not guarantee hiring success:** some recruiting sources generate large numbers of applications but weaker downstream outcomes, demonstrating that quality of applicants matters as much as quantity.
+- **Employee referrals consistently produce stronger hiring outcomes:** referral candidates tend to progress further through the hiring process and show stronger offer acceptance rates compared to many external sourcing channels.
+- **The recruiting funnel exposes where candidate drop-off occurs:** the largest reductions in candidate volume occur in the mid-funnel stages, suggesting that screening criteria or candidate qualification processes significantly impact final hiring outcomes.
+- **Open requisitions reveal operational hiring pressure:** departments with both a high number of open roles and older requisitions represent the greatest recruiting risk and should typically receive the highest hiring priority.
+- **Hiring metrics must be standardized across datasets:** recruiting tables and workforce event tables often define hires differently, so aligning the hire definition across sources was necessary to keep dashboard KPIs consistent.
 
 ## Key build decisions
-- **Built as a Tableau dashboard on top of Databricks SQL outputs:** Databricks handled ingestion, cleaning, validation, and mart-style query preparation, while Tableau was used for the final visuals.
-- **Structured the dataset as a multi-table HR/TA model:** used separate dimensions and fact tables to support workforce and recruiting analysis without relying on messy fact-to-fact dashboard joins.
-- **Standardized messy source values in the clean layer:** normalized casing, label variants, blank/`"NULL"` values, and mixed date formats before building metrics.
-- **Protected time-to-fill metrics with chronology handling:** requisitions with invalid `closed_date < opened_date` were handled in the clean layer by nulling invalid close dates rather than modifying raw records.
-- **Used helper fields to make dashboard logic stable:** created fields such as `is_active_flag`, `tenure_band`, `is_open_flag`, `time_to_fill_days`, and stage-based helpers so Tableau visuals could rely on prepared logic instead of fragile front-end calculations alone.
-- **Designed KPI logic around the latest visible month:** this helped workforce KPIs respond correctly to filters and avoided mixing values from different months in summary tiles.
-- **Separated workforce health from recruiting funnel analysis:** the dashboard was intentionally split into two pages so employee trends and recruiting performance could each answer a focused set of stakeholder questions.
-- **Validated relationships before dashboarding:** checked fact-to-dimension coverage, candidate-to-requisition linkage, and stage-event-to-candidate linkage before visual design so dashboard issues would not be mistaken for data model issues.
+- **Pre-aggregating analytical views in SQL before visualization:** creating dashboard-ready views in Databricks simplified Tableau calculations, reduced double-counting risk, and improved dashboard performance.
+- **Preserving the correct grain for workforce metrics:** workforce headcount was calculated from monthly snapshot tables rather than event data to avoid incorrectly summing point-in-time metrics across months.
+- **Preventing candidate duplication in funnel analysis:** recruiting stage events were aggregated at the candidate application level to ensure each candidate appeared only once per stage, preventing inflated funnel counts.
+- **Integrating regional analysis directly into the data model:** location dimensions were incorporated into analytical views so that all metrics could be consistently segmented by region without relying on complex dashboard joins.
+- **Standardizing the hire definition across the analysis:** hires were treated as a canonical metric so that recruiting KPIs and workforce event metrics aligned across all visualizations.
+- **Designing the dashboard as a diagnostic workflow:** the project was intentionally structured to guide users from workforce health → recruiting performance → hiring priorities, mirroring how HR teams investigate staffing challenges.
+
+## Why this project matters
+- **Hiring performance directly impacts organizational growth:** if recruiting pipelines cannot keep pace with workforce demand, departments may struggle to meet operational goals.
+- **Recruiting efficiency requires more than application counts:** this project demonstrates the importance of evaluating recruiting sources based on funnel progression, offer acceptance, and hiring outcomes, not just raw applicant volume.
+- **Early identification of hiring bottlenecks improves recruiting strategy:** visualizing candidate drop-off points allows HR teams to adjust sourcing, screening criteria, or interview processes.
+- **Open requisition pressure highlights operational risk:** roles that remain open for extended periods can signal skill shortages, unrealistic job requirements, or limited recruiting capacity.
+- **Data-driven workforce planning requires integrated metrics:** combining workforce snapshots, employee events, and recruiting pipeline data provides a more complete view of organizational health than analyzing each dataset independently.
 
 ## Artifacts
 - **Project build notes (PDF):** [HR Analytics Project Build Notes](docs/HR_Analytics_Project_Build_Notes.pdf)
@@ -65,7 +68,7 @@ https://public.tableau.com/app/profile/cameron.scott3127/vizzes
 ## Tech stack
 - Databricks SQL
 - Tableau
-- Curated mart schema: `workspace.hr_analytics`
+- Curated schema: `workspace.hr_analytics`
 
 ## Data notes
 This project uses a synthetic HR and Talent Acquisition dataset representing a mid-sized company. Raw data is not included in this repository.
