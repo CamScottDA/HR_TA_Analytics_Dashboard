@@ -60,9 +60,9 @@ Additional screenshots are available in `docs/screenshots/`.
 - **Validated relationships before dashboarding:** checked fact-to-dimension coverage, candidate-to-requisition linkage, and stage-event-to-candidate linkage before visual design so dashboard issues would not be mistaken for data model issues.
 
 ## Artifacts
-- Supporting documentation: `docs/`
+- **Project build notes (PDF):** `docs/HR_Analytics_Project_Build_Notes.pdf`
 - Dashboard screenshots: `docs/screenshots/`
-- SQL used for ingestion, cleaning, validation, and dashboard prep: [`sql/`](sql/)
+- **SQL used for ingestion, cleaning, validation, and dashboard prep:** [`sql/`](sql/)
 
 ## Tech stack
 - Databricks SQL
