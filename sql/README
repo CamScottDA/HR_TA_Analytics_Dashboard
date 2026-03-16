@@ -1,0 +1,61 @@
+# SQL Index
+
+This folder contains the SQL used to build the HR + Talent Acquisition Analytics Dashboard project.
+
+## File Guide
+
+### `01_raw_ingest.sql`
+Creates temp views from CSV files and loads raw tables into the `hr_analytics` schema.
+
+Includes:
+- `dim_department_raw`
+- `dim_location_raw`
+- `dim_job_raw`
+- `fct_employee_snapshot_monthly_raw`
+- `fct_employee_events_raw`
+- `fct_requisitions_raw`
+- `fct_candidates_raw`
+- `fct_candidate_stage_events_raw`
+
+### `02_clean_views.sql`
+Creates cleaned views used for downstream analysis and dashboarding.
+
+Includes:
+- `dim_department_clean`
+- `dim_location_clean`
+- `dim_job_clean`
+- `fct_employee_snapshot_monthly_clean`
+- `fct_employee_events_clean`
+- `fct_requisitions_clean`
+- `fct_candidates_clean`
+- `fct_candidate_stage_events_clean`
+
+### `03_validation_checks.sql`
+Contains table-level and cross-table QA queries used to validate keys, domains, chronology, and relationship coverage.
+
+Includes examples such as:
+- primary key uniqueness checks
+- null key checks
+- domain standardization checks
+- chronology checks
+- trend-readiness checks
+- foreign key coverage checks
+- funnel consistency checks
+
+### `04_dashboard_datasets.sql`
+Creates the final Tableau-ready dataset views used for dashboard visuals.
+
+Includes:
+- Page 1 workforce monthly trends
+- Page 1 headcount segmentation
+- Page 1 attrition drivers
+- Page 2 TA monthly core metrics
+- Page 2 source quality
+- Page 2 funnel stages
+- Page 2 open requisition priority
+
+## Notes
+This repo reflects the project’s actual workflow:
+raw ingest -> clean views -> validation -> dashboard datasets
+
+The Tableau datasets are built from cleaned views in `hr_analytics`. No separate mart layer was used for candidates in this project.
