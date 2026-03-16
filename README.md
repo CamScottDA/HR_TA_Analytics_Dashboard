@@ -58,9 +58,9 @@ https://public.tableau.com/app/profile/cameron.scott3127/vizzes
 - **Validated relationships before dashboarding:** checked fact-to-dimension coverage, candidate-to-requisition linkage, and stage-event-to-candidate linkage before visual design so dashboard issues would not be mistaken for data model issues.
 
 ## Artifacts
-- **Project build notes (PDF):** `docs/HR_Analytics_Project_Build_Notes.pdf`
-- Dashboard screenshots: `docs/screenshots/`
-- **SQL used for ingestion, cleaning, validation, and dashboard prep:** [`sql/`](sql/)
+- **Project build notes (PDF):** [HR Analytics Project Build Notes](docs/HR_Analytics_Project_Build_Notes.pdf)
+- Dashboard screenshots: [docs/screenshots/](docs/screenshots/)
+- **SQL used for ingestion, cleaning, validation, and dashboard prep:** [sql/](sql/)
 
 ## Tech stack
 - Databricks SQL
