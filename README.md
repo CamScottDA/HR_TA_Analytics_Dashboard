@@ -10,8 +10,6 @@ https://public.tableau.com/app/profile/cameron.scott3127/vizzes
 
 ## Screenshots
 
-## Screenshots
-
 ### Page 1 — Workforce Health
 ![Page 1 — Workforce Health](docs/screenshots/Workforce%20Health.png)
 
