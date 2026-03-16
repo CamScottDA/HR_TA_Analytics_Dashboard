@@ -11,10 +11,10 @@ https://public.tableau.com/app/profile/cameron.scott3127/vizzes
 ## Screenshots
 
 ### Page 1 — Workforce Health
-![Page 1 — Workforce Health](docs/screenshots/page1_workforce_health.png)
+![Page 1 — Workforce Health](docs/screenshots/Workforce Health.png)
 
 ### Page 2 — Talent Acquisition Funnel
-![Page 2 — Talent Acquisition Funnel](docs/screenshots/page2_talent_acquisition_funnel.png)
+![Page 2 — Talent Acquisition Funnel](docs/screenshots/Talent Acquisition Funnel.png)
 
 ## What this project demonstrates
 - Multi-table HR and Talent Acquisition data modeling
