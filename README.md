@@ -16,8 +16,6 @@ https://public.tableau.com/app/profile/cameron.scott3127/vizzes
 ### Page 2 — Talent Acquisition Funnel
 ![Page 2 — Talent Acquisition Funnel](docs/screenshots/page2_talent_acquisition_funnel.png)
 
-Additional screenshots are available in `docs/screenshots/`.
-
 ## What this project demonstrates
 - Multi-table HR and Talent Acquisition data modeling
 - Data cleaning and standardization across messy source files
