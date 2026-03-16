@@ -702,7 +702,7 @@ ORDER BY
 
 SELECT *
 FROM hr_analytics.v_tableau_page2_funnel_stages_region
-ORDER BY month_start, stage_order;
+ORDER BY month_start, region, stage_order;
 
 
 -- =========================================================
